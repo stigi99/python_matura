@@ -19,3 +19,21 @@ print(liczba_naj_suma)
 print(indeks_maks_sum)
 print("Najwieksza sume cyfr ma liczba",liczba_naj_suma,"Wynosi ona",indeks_maks_sum)
 
+
+def sumDigits(no):
+    return 0 if no == 0 else int(no % 10) + sumDigits(int(no / 10))
+
+
+
+
+
+liczby = open('liczby.txt')
+liczby = liczby.read()
+liczby = liczby.split()
+liczby = list(set(map(int,liczby)))
+ListOfSums = list(map(sumDigits,liczby))
+MaxValueFromSums = max(ListOfSums) #indeks zsumowanej odpowiada indeksowi liczby
+IndexMaxSums = ListOfSums.index(MaxValueFromSums)
+MostNum = liczby.pop(IndexMaxSums)
+print("Najwieksza sume cyfr ma liczba",MostNum,"Wynosi ona",IndexMaxSums)
+
