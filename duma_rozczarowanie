@@ -1,0 +1,21 @@
+
+def sumDigits(no):
+    return 0 if no == 0 else int(no % 10) + sumDigits(int(no / 10))
+
+
+# Driver code
+print(sumDigits(687))
+
+
+liczby = open('liczby.txt')
+liczby = liczby.read()
+liczby = liczby.split()
+liczby = list(set(map(int,liczby)))
+zsumowane = list(map(sumDigits,liczby))
+maksymalna_liczba = max(zsumowane) #indeks zsumowanej odpowiada indeksowi liczby
+indeks_maks_sum = zsumowane.index(maksymalna_liczba)
+liczba_naj_suma = liczby.pop(indeks_maks_sum)
+print(liczba_naj_suma)
+print(indeks_maks_sum)
+print("Najwieksza sume cyfr ma liczba",liczba_naj_suma,"Wynosi ona",indeks_maks_sum)
+
